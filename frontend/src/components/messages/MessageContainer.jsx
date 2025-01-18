@@ -1,16 +1,23 @@
 import { TiMessages } from 'react-icons/ti'
+import { useEffect } from 'react'
 import Messages from './Messages.jsx'
 import MessageInput from './MessageInput.jsx'
+import { useAuthContext } from '../../context/AuthContext.jsx'
+import useConversation from '../../zustand/useConversation.js'
 
 const MessageContainer = () => {
-    const noChatSelected = false;
+    const {selectedConversation, setSelectedConversation} = useConversation();
+
+    useEffect(() => {
+        return () => setSelectedConversation(null)
+    }, [setSelectedConversation]);
 
     return (
         <div className='md:min-w-[450px] flex flex-col '>
-            {noChatSelected ? <NoChatSelected /> : (
+            {!selectedConversation ? <NoChatSelected /> : (
                 <>
                     <div className="bg-slate-400 px-4 py-2 mb-2">
-                        <span className="text-gray-600 font-semibold">To:</span> <span className="text-gray-700 font-bold">John Snow</span>
+                        <span className="text-gray-700 font-bold">{selectedConversation.fullname}</span>
                     </div>
                     <Messages />
                     <MessageInput />
@@ -23,10 +30,11 @@ const MessageContainer = () => {
 export default MessageContainer
 
 const NoChatSelected = () => {
+    const { authUser } = useAuthContext();
     return (
         <div className="flex justify-center items-center w-full h-full">
             <div className="px-4 text-center sm:text-lg md:text-xl text-gray-200 font-semibold flex flex-col items-center gap-2">
-                <p>Welcome John Snow</p>
+                <p>Welcome {authUser.user.fullname}</p>
                 <p>Select a chat to start messaging</p>
                 <TiMessages className='text-3xl md:text-6xl text-center'/>
             </div>
