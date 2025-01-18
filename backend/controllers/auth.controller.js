@@ -5,7 +5,7 @@ import generateTokenAndSetCookie from '../utils/generateToken.js';
 
 export const signup = async (req, res) => {
     try {
-        let { fullName, username, password, confirmPassword, gender } = req.body;
+        let { fullname, username, password, confirmPassword, gender } = req.body;
         username = username.toLowerCase();
 
         if (password !== confirmPassword) {
@@ -24,7 +24,7 @@ export const signup = async (req, res) => {
         const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`;
 
         const newUser = new User({
-            fullName,
+            fullname,
             username,
             password,
             gender,
