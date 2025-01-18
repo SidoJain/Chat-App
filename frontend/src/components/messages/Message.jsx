@@ -1,16 +1,14 @@
 import { useAuthContext } from '../../context/AuthContext';
-import useConversation from '../../zustand/useConversation';
 
 const Message = ({ message }) => {
     const { authUser } = useAuthContext();
-    const {selectedConversation} = useConversation();
     const isSender = message.senderId === authUser.user._id;
     const chatName = isSender ? 'chat-end' : 'chat-start';
     const chatColor = isSender ? 'bg-blue-700' : 'bg-gray-700';
 
     return (
         <div className={`chat ${chatName}`}>
-            <div className={`chat-bubble text-white ${chatColor}`}>{message.message}</div>
+            <div className={`chat-bubble break-words text-white ${chatColor}`}>{message.message}</div>
             <div className="chat-footer opacity-80 text-xs flex gap-1 items-center">{getTime(message.createdAt)}</div>
         </div>
     )
