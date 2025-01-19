@@ -5,13 +5,15 @@ import notifSound from "../assets/notif_sound.mp3"
 
 const useListenMessages = () => {
 	const { socket } = useSocketContext();
-	const { messages, setMessages } = useConversation();
+	const { messages, setMessages, selectedConversation } = useConversation();
 
 	useEffect(() => {
 		socket?.on("newMessage", (newMessage) => {
-            const sound = new Audio(notifSound);
-            sound.play();
-			setMessages([...messages, newMessage]);
+            if (newMessage.senderId === selectedConversation._id) {
+                const sound = new Audio(notifSound);
+                sound.play();
+                setMessages([...messages, newMessage]);
+            }
 		});
 
 		return () => socket?.off("newMessage");
