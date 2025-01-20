@@ -16,10 +16,10 @@ const Message = ({ message }) => {
 
 const getTime = (dateTime) => {
     const newDate = new Date(dateTime);
-    const hours = newDate.getHours();
-    const mins = newDate.getMinutes();
-    const date = newDate.getDate();
-    const month = newDate.getMonth() + 1;
+    const hours = newDate.getHours().toString().padStart(2, '0');
+    const mins = newDate.getMinutes().toString().padStart(2, '0');
+    const date = newDate.getDate().toString().padStart(2, '0');
+    const month = (newDate.getMonth() + 1).toString().padStart(2, '0');
     const year = newDate.getFullYear();
     return `${hours}:${mins} ${date}/${month}/${year}`;
 }
