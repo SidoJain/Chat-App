@@ -27,7 +27,7 @@ export const Signup = () => {
         <div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
             <div className="w-full p-6 h-full bg-white-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-50 border-2 border-gray-400">
                 <h1 className="text-4xl font-bold text-center text-blue-700">QuickChat</h1>
-                <h1 className="text-3xl font-semibold text-center text-gray-300">Login</h1>
+                <h1 className="text-3xl font-semibold text-center text-gray-300">Signup</h1>
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label className="label p-2" htmlFor="fullname">

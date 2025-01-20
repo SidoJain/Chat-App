@@ -21,8 +21,8 @@ const useSignup = () => {
 			});
 
 			const data = await res.json();
-			if (data.error) {
-				throw new Error(data.error);
+			if (data.message == 'User already exists!') {
+				throw new Error(data.message);
 			}
 
 			localStorage.setItem('auth-user', JSON.stringify(data));

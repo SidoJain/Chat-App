@@ -1,5 +1,6 @@
 import { useSocketContext } from "../../context/SocketContext.jsx";
 import useConversation from "../../zustand/useConversation.js";
+import blankAvatar from '../../assets/blank_avatar.png';
 
 const Conversation = ({ conversation, lastIdx }) => {
     const { selectedConversation, setSelectedConversation } = useConversation();
@@ -8,12 +9,17 @@ const Conversation = ({ conversation, lastIdx }) => {
     const { onlineUsers } = useSocketContext();
     const isOnline = onlineUsers.includes(conversation._id);
 
+    const setDefaultAvatar = (event) => {
+        event.target.src = blankAvatar;
+        event.onError = null;
+    }
+
     return (
         <>
             <div className={`flex gap-2 hover:bg-slate-800 items-center rounded px-2 py-1 cursor-pointer ${isSelected ? 'bg-slate-800' : ''}`} onClick={() => setSelectedConversation(conversation)}>
                 <div className={`avatar ${isOnline ? 'online' : ''}`}>
                     <div className="w-12 rounded-full ">
-                        <img src={conversation.profilePic} alt="" />
+                        <img src={conversation.profilePic} alt='avatar' onError={setDefaultAvatar} />
                     </div>
                 </div>
 
