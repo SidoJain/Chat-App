@@ -8,7 +8,7 @@ const Navbar = () => {
             <div className="bg-slate-900 text-white p-4 flex justify-between items-center">
                 <a href="/" className="text-4xl font-bold text-center text-blue-700 cursor-pointer">QuickChat</a>
                 <div className="flex items-center">
-                    <div className="mr-4">{username}</div>
+                    <a href="/profile" className="underline mr-4">{username}</a>
                     {username ? <LogoutBtn /> : null}
                 </div>
             </div>

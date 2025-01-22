@@ -3,6 +3,7 @@ import { Toaster } from 'react-hot-toast'
 import { Login } from './pages/login/Login'
 import { Signup } from './pages/signup/Signup'
 import { Home } from './pages/home/Home'
+import { Profile } from './pages/profile/Profile'
 import Navbar from './components/navbar/Navbar'
 import { useAuthContext } from './context/AuthContext.jsx'
 
@@ -17,6 +18,7 @@ function App() {
                     <Route path='/' element={authUser ? <Home /> : <Navigate to='/login' />} />
                     <Route path='/login' element={authUser ? <Navigate to='/' /> : <Login />} />
                     <Route path='/signup' element={authUser ? <Navigate to='/' /> : <Signup />} />
+                    <Route path='/profile' element={authUser ? <Profile /> : <Navigate to='/' />} />
                 </Routes>
                 <Toaster />
             </div>

@@ -17,8 +17,8 @@ const useSendMessage = () => {
 				body: JSON.stringify({ message }),
 			});
 			const data = await res.json();
-			if (data.error) {
-				throw new Error(data.error);
+			if (data.message === 'Internal Server Error' || data.message === 'User not found') {
+				throw new Error(data.message);
 			}
 
 			setMessages([...messages, data]);
