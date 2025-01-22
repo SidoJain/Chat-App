@@ -47,7 +47,7 @@ export const Profile = () => {
     return (
         <div className="flex gap-4 flex-col min-w-[300px] p-4 h-[550px] rounded-lg overflow-hidden bg-white-300 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-50 border-2 border-gray-400 items-center">
             <h1 className="text-3xl font-semibold text-center text-gray-300">Profile</h1>
-            <div className='w-24 rounded-full'>
+            <div className='w-24 h-24 rounded-full border-solid border-gray-400 border-2'>
                 <img src={`${user.profilePic}`} alt="avatar" onError={setDefaultAvatar} />
             </div>
             <div>
